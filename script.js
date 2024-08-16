@@ -13,4 +13,23 @@ function getComputerChoice(){
   else return "scissors";
 }
 
+function getHumanChoice(){
+  let userInput = parseInt(prompt(console.log("Enter the value of your choice:\n(1) Rock\n(2) Paper\n(3) Scissors ")));
+  switch (userInput){
+    case 1: 
+      return "rock";
+      break;
+    case 2: 
+      return "paper";
+      break;
+    case 3:
+      return "scissors";
+      break;
+    default:
+      console.log("Hmm, something got wrong. Try again")
+      return getHumanChoice();
+  }
+}
+
 console.log(getComputerChoice());
+console.log(getHumanChoice());
