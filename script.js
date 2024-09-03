@@ -42,43 +42,61 @@ function givePointToComputer(){
   computerScore++;
 }
 
-function resetScores(){
-  humanScore = 0;
-  computerScore = 0;
+function playGame(){
+  function playRound(humanChoice, computerChoice){
+    if (humanChoice == computerChoice){
+      console.log("Draw");
+    }
+    else if (humanChoice == "rock"){
+      switch (computerChoice){
+        case "paper":
+          console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+          givePointToComputer();
+          break;
+        case "scissors":
+          console.log(`You won! ${humanChoice} beats ${computerChoice}.`);
+          givePointToPlayer();
+          break;
+      }
+    }
+    else if (humanChoice == "paper"){
+      switch (computerChoice){
+        case "scissors":
+          console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+          givePointToComputer();
+          break;
+        case "rock":
+          console.log(`You won! ${humanChoice} beats ${computerChoice}.`);
+          givePointToPlayer();
+          break;
+      }
+    }
+    else if (humanChoice == "scissors"){
+      switch (computerChoice){
+        case "rock":
+          console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+          givePointToComputer();
+          break;
+        case "paper":
+          console.log(`You won! ${humanChoice} beats ${computerChoice}.`);
+          givePointToPlayer();
+          break;
+      }
+    }
+  }
+
+  for(let i=0; i<5; i++){
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
+
+  if(humanScore > computerScore){
+    console.log("You won the game!");
+  }
+  else { 
+    console.log("You lose the game!");
+  }
 }
 
-function playRound(humanChoice, computerChoice){
-  if (humanChoice == computerChoice){
-    console.log("Draw");
-  }
-  else if (humanChoice == "rock"){
-    switch (computerChoice){
-      case "paper":
-        break;
-      case "scissors":
-        break;
-    }
-  }
-  else if (humanChoice == "paper"){
-    switch (computerChoice){
-      case "scissors":
-        break;
-      case "rock":
-        break;
-    }
-  }
-  else if (humanChoice == "scissors"){
-    switch (computerChoice){
-      case "rock":
-        break;
-      case "paper":
-        break;
-    }
-  }
-}
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+playGame();
