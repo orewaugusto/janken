@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getRandomInt(max){
   return Math.floor(Math.random() * max);
 }
@@ -30,6 +33,52 @@ function getHumanChoice(){
       return getHumanChoice();
   }
 }
+
+function givePointToPlayer(){
+  humanScore++;
+}
+
+function givePointToComputer(){
+  computerScore++;
+}
+
+function resetScores(){
+  humanScore = 0;
+  computerScore = 0;
+}
+
+function playRound(humanChoice, computerChoice){
+  if (humanChoice == computerChoice){
+    console.log("Draw");
+  }
+  else if (humanChoice == "rock"){
+    switch (computerChoice){
+      case "paper":
+        break;
+      case "scissors":
+        break;
+    }
+  }
+  else if (humanChoice == "paper"){
+    switch (computerChoice){
+      case "scissors":
+        break;
+      case "rock":
+        break;
+    }
+  }
+  else if (humanChoice == "scissors"){
+    switch (computerChoice){
+      case "rock":
+        break;
+      case "paper":
+        break;
+    }
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
 console.log(getComputerChoice());
 console.log(getHumanChoice());
