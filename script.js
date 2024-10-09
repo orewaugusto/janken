@@ -16,30 +16,24 @@ function getComputerChoice(){
   else return "scissors";
 }
 
-function getHumanChoice(){
-  let userInput = parseInt(prompt(console.log("Enter the value of your choice:\n(1) Rock\n(2) Paper\n(3) Scissors ")));
-  switch (userInput){
-    case 1: 
-      return "rock";
-      break;
-    case 2: 
-      return "paper";
-      break;
-    case 3:
-      return "scissors";
-      break;
-    default:
-      console.log("Hmm, something got wrong. Try again")
-      return getHumanChoice();
+function checkWinner(){
+  if(humanScore == 5){
+    console.log("you won!");
   }
+  else if(computerScore == 5){
+    console.log("you lost!");
+  }
+  else return;
 }
 
 function givePointToPlayer(){
   humanScore++;
+  checkWinner();
 }
 
 function givePointToComputer(){
   computerScore++;
+  checkWinner();
 }
 
 function playGame(){
@@ -85,11 +79,19 @@ function playGame(){
     }
   }
 
-  for(let i=0; i<5; i++){
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
+  const rockBtn = document.querySelector("#rock");
+  const paperBtn = document.querySelector("#paper");
+  const scissorBtn = document.querySelector("#scissor");
+
+  rockBtn.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+  });
+  paperBtn.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+  });
+  scissorBtn.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+  });
 
   if(humanScore > computerScore){
     console.log("You won the game!");
