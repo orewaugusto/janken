@@ -1,0 +1,38 @@
+*{
+  border: 2px solid red;
+}
+
+body {
+  background-color: lavender;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+}
+
+.match {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+}
+
+button {
+  background-color: transparent; /* Remove cor de fundo */
+  border: none; /* Remove o contorno */
+  padding: 0; /* Remove preenchimento */  
+  cursor: pointer; /* Mantém o comportamento de clique */
+}
+
+img {
+  height: 100px;
+}
+
+#playerChoice {
+  transform: scaleX(-1);
+}
+

@@ -101,4 +101,4 @@ function playGame(){
   }
 }
 
-playGame();
+playGame(); 
