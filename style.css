@@ -1,12 +1,10 @@
-*{
+/* *{
   border: 2px solid red;
-}
+} */
 
 body {
-  background-color: lavender;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  background-color: white;
+  margin: 20px;
 }
 
 .score {
@@ -14,11 +12,24 @@ body {
   justify-content: space-between;
 }
 
+.playerScore, .pcScore {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .match {
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 50px;
   align-items: center;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -26,13 +37,63 @@ button {
   border: none; /* Remove o contorno */
   padding: 0; /* Remove preenchimento */  
   cursor: pointer; /* Mantém o comportamento de clique */
+  display: flex;
+  align-items: center;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 img {
   height: 100px;
 }
 
-#playerChoice {
+.match img {
+  height: 200px;
+}
+
+#playerHand {
   transform: scaleX(-1);
 }
 
+@keyframes bouncePlayer {
+  0%, 100% {
+    transform: translateY(0) scaleX(-1); 
+  }
+  25% {
+    transform: translateY(-20px) scaleX(-1);
+  }
+  50% {
+    transform: translateY(0) scaleX(-1);
+  }
+  75% {
+    transform: translateY(-10px) scaleX(-1);
+  }
+}
+
+@keyframes bounceComputer {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+}
+
+.bounce-animation-player {
+  animation: bouncePlayer 0.5s ease-in-out 2;
+}
+
+.bounce-animation-computer {
+  animation: bounceComputer 0.5s ease-in-out 2;
+}

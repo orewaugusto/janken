@@ -28,16 +28,49 @@ function checkWinner(){
 
 function givePointToPlayer(){
   humanScore++;
+  const playerScore = document.querySelector(".playerScore h3");
+  playerScore.textContent = String(humanScore);
   checkWinner();
 }
 
 function givePointToComputer(){
   computerScore++;
+  const pcScore = document.querySelector(".pcScore h3");
+  pcScore.textContent = String(computerScore);
   checkWinner();
+}
+
+function shakeHands(humanChoice, computerChoice){
+  const imageMap = {
+  rock: './images/playrock.png',
+  paper: './images/playpaper.png',
+  scissors: './images/playscissor.png'
+};
+
+  const playerHand = document.querySelector("#playerHand");
+  const computerHand = document.querySelector("#computerHand");
+
+  playerHand.src = imageMap["rock"];
+  computerHand.src = imageMap["rock"];
+
+  // Aplica a animação de quicar nas duas mãos
+  playerHand.classList.add("bounce-animation-player");
+  computerHand.classList.add("bounce-animation-computer");
+
+  // Quando a animação terminar, trocar as imagens
+  setTimeout(() => {
+    playerHand.src = imageMap[humanChoice];
+    computerHand.src = imageMap[computerChoice];
+
+    // Remove a classe de animação para que possa ser reaplicada futuramente
+    playerHand.classList.remove("bounce-animation-player");
+    computerHand.classList.remove("bounce-animation-computer");
+  }, 1000); // Espera 1 segundo (tempo suficiente para a animação terminar)
 }
 
 function playGame(){
   function playRound(humanChoice, computerChoice){
+    shakeHands(humanChoice, computerChoice);
     if (humanChoice == computerChoice){
       console.log("Draw");
     }
